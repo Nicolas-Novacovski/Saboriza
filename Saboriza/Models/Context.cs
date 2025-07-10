@@ -6,6 +6,8 @@ namespace Saboriza.Models
     {
         public Context(DbContextOptions<Context> options) : base(options) { }
         public DbSet<Produto> Produtos { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
 
     }
 }
