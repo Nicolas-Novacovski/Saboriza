@@ -16,7 +16,7 @@ namespace Saboriza.Models
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public decimal Preco { get; set; }
-        public decimal PrecoPromocional { get; set; }
+        public decimal? PrecoPromocional { get; set; }
         public string ImagemUrl { get; set; }
         public string Categoria { get; set; }
     }

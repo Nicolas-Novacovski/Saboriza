@@ -3,9 +3,11 @@ using Saboriza.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+var connectionString = Environment.GetEnvironmentVariable("SABORIZA_DB_CONNECTION");
+
 builder.Services.AddDbContext<Context>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(connectionString));
+
 
 var app = builder.Build();
 

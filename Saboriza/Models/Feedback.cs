@@ -14,7 +14,7 @@ namespace Saboriza.Models
 
         public int IdProduto { get; set; }
         public int IdUsuario { get; set; }
-        public int Rating { get; set; }
-        public string Avaliacao { get; set; }
+        public int? Rating { get; set; }
+        public string? Avaliacao { get; set; }
     }
 }
