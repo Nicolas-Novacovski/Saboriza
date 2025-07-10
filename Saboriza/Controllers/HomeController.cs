@@ -1,32 +1,20 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Saboriza.Models;
+using System.Collections.Generic;
 
 namespace Saboriza.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
         public IActionResult Index()
         {
-            return View();
-        }
+            var produtos = new List<Produto>
+            {
+                new Produto { Id = 1, Nome = "Bolo de Chocolate", Descricao = "Delicioso e caseiro", Preco = 25.50M, ImagemUrl = "/img/bolo.jpg" },
+                new Produto { Id = 2, Nome = "Pudim", Descricao = "Tradicional e cremoso", Preco = 15.00M, ImagemUrl = "/img/pudim.jpg" }
+            };
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(produtos);
         }
     }
 }
