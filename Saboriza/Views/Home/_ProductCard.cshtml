@@ -15,15 +15,7 @@
         <h3 class="product-title">@Model.Nome</h3>
         <p class="product-description">@Model.Descricao</p>
         <div class="prices">
-            @if (Model.PrecoPromocional > 0 && Model.PrecoPromocional < Model.Preco)
-            {
-                <span class="original-price">R$ @Model.Preco.ToString("F2")</span>
-                <span class="current-price">R$ @Model.PrecoPromocional.ToString("F2")</span>
-            }
-            else
-            {
                 <span class="current-price">R$ @Model.Preco.ToString("F2")</span>
-            }
         </div>
         <div class="product-actions">
             <button class="btn btn-sm btn-wishlist">

@@ -5,6 +5,8 @@ namespace Saboriza.Controllers
 {
     public class UsuarioController : Controller
     {
+        [HttpGet]
+        [Route("Perfil-Usuario")]
         public IActionResult PerfilUsuario()
         {
             var user = new Usuario
@@ -17,5 +19,6 @@ namespace Saboriza.Controllers
             return View(user);
         }
     }
+
 }
 
