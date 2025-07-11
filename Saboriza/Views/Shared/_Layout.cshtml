@@ -34,7 +34,7 @@
                         <a href="@Url.Action("PerfilUsuario", "Usuario")" class="user-action" title="Perfil">
                             <i class="fas fa-user"></i>
                         </a>
-                        <a href="#" class="user-action" title="Favoritos">
+                        <a href="@Url.Action("PratoFavorito", "Usuario")" class="user-action" title="Favoritos">
                             <i class="fas fa-heart"></i>
                             <span class="badge">3</span>
                         </a>
@@ -47,6 +47,7 @@
             </div>
         </nav>
     </header>
+    <br/>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

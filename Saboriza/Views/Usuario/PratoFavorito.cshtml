@@ -1,0 +1,58 @@
+﻿@model List<Saboriza.Models.PratoFavorito>
+
+@{
+    ViewData["Title"] = "Meus Favoritos";
+}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+
+<div class="favorites-container">
+    <h1><i class="fas fa-heart"></i> Meus Favoritos</h1>
+
+    @if (!Model.Any())
+    {
+        <div class="empty-favorites">
+            <i class="fas fa-heart-broken"></i>
+            <p>Você ainda não adicionou nenhuma comida aos favoritos.</p>
+            <a href="@Url.Action("Index", "Home")" class="btn-back-profile"><i class="fas fa-store"></i> Voltar às compras</a>
+        </div>
+    }
+    else
+    {
+        <div class="favorites-grid">
+            @foreach (var prato in Model)
+            {
+                <div class="favorite-card">
+                    <img src="@prato.ImagemUrl" alt="@prato.Nome" class="favorite-image" />
+                    <button title="Remover dos favoritos" class="btn-remove-favorite" 
+                            onclick="removerFavorito(@prato.Id)">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div class="favorite-info">
+                        <div class="favorite-name">@prato.Nome</div>
+                        <div class="favorite-description">@prato.DescricaoCurta</div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+<script>
+    function removerFavorito(id) {
+        if (!confirm("Tem certeza que deseja remover este prato dos favoritos?")) return;
+
+        // Exemplo de requisição AJAX para remover favorito
+        fetch('/Favoritos/Remover/' + id, { method: 'POST' })
+            .then(res => {
+                if (res.ok) {
+                    alert('Prato removido dos favoritos!');
+                    location.reload(); // Recarregar a página para atualizar lista
+                } else {
+                    alert('Erro ao remover. Tente novamente.');
+                }
+            })
+            .catch(() => alert('Erro na comunicação com o servidor.'));
+    }
+</script>

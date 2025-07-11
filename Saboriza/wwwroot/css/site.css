@@ -25,7 +25,7 @@ html {
 }
 
 body {
-    margin-bottom: 60px;
+    margin-bottom: 100px;
 }
 
 /* Estilo do cabeçalho */
@@ -114,7 +114,7 @@ body {
 /* Rodapé */
 .footer {
     background-color: #f8f9fa;
-    padding: 1.5rem 0;
+    padding: 0 rem 0;
     margin-top: 2rem;
 }
 
@@ -335,8 +335,8 @@ body {
 
 .search-container {
     position: fixed;
-    top: 83px;
-    right: 195px;
+    top: 111px;
+    right: 200px;
     z-index: 100;
 }
 
@@ -440,7 +440,7 @@ body {
 
 .filter-container {
     position: fixed;
-    top: 83px;
+    top: 111px;
     right: 50px;
     z-index: 100;
 }
@@ -531,6 +531,7 @@ body {
         transform: translateY(0);
     }
 }
+
 
 .wrapper {
     display: block;
@@ -646,4 +647,244 @@ body {
         color: var(--green);
         background-color: var(--white);
         border-color: var(--green);
+    }
+
+/* ========================================== */
+/* ESTILOS DA TELA DO PERFIL USUARIOS */
+/* ========================================== */
+
+.profile-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', sans-serif;
+    animation: fadeIn 0.7s ease-in-out;
+}
+
+.profile-header {
+    text-align: center;
+    border-bottom: 2px dashed #FFD700;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.profile-avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #FFD700;
+    margin-bottom: 15px;
+}
+
+.profile-name {
+    font-size: 32px;
+    font-weight: bold;
+    color: #000;
+}
+
+.profile-join-date {
+    font-size: 16px;
+    color: #666;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.detail-section {
+    padding: 20px;
+    border: 1px solid #FFD700;
+    border-radius: 15px;
+    background-color: #fffaf0;
+}
+
+.section-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #000;
+    border-left: 5px solid #FFD700;
+    padding-left: 10px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    color: #444;
+}
+
+    .detail-item i {
+        color: #FFD700;
+        font-size: 18px;
+    }
+
+.btn-edit-profile, .btn-shop-now {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #FFD700;
+    color: #000;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+    .btn-edit-profile:hover, .btn-shop-now:hover {
+        background-color: #e6c200;
+        transform: scale(1.03);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+.empty-orders {
+    text-align: center;
+    color: #999;
+}
+
+    .empty-orders i {
+        font-size: 40px;
+        color: #FFD700;
+        margin-bottom: 10px;
+    }
+
+.about-me-box, .rewards-box {
+    background-color: #fff;
+    border: 1px dashed #FFD700;
+    border-radius: 15px;
+    padding: 15px;
+    font-size: 15px;
+    color: #555;
+}
+
+    .about-me-box i, .rewards-box i {
+        color: #FFD700;
+        margin-right: 6px;
+    }
+
+
+    /*TELA DE PRATO FAVORITO*/
+
+.favorites-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    color: #000;
+    margin-bottom: 25px;
+    font-weight: 700;
+    border-bottom: 3px solid #FFD700;
+    padding-bottom: 8px;
+    letter-spacing: 1.1px;
+}
+
+.favorites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+    gap: 25px;
+}
+
+.favorite-card {
+    background: #fffaf0;
+    border: 2px solid #FFD700;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+    .favorite-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+.favorite-image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-bottom: 2px solid #FFD700;
+}
+
+.favorite-info {
+    padding: 15px 20px;
+}
+
+.favorite-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 8px;
+}
+
+.favorite-description {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 15px;
+    min-height: 38px;
+}
+
+.btn-remove-favorite {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #FFD700;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    color: #000;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+    .btn-remove-favorite:hover {
+        background-color: #e6c200;
+    }
+
+.empty-favorites {
+    text-align: center;
+    color: #999;
+    margin-top: 80px;
+}
+
+    .empty-favorites i {
+        font-size: 50px;
+        color: #FFD700;
+        margin-bottom: 10px;
+    }
+
+.btn-back-profile {
+    display: inline-block;
+    margin: 25px auto 0;
+    background-color: #FFD700;
+    color: #000;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-back-profile:hover {
+        background-color: #e6c200;
     }

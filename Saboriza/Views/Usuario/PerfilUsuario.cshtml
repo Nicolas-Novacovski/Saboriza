@@ -3,6 +3,8 @@
 @{
     ViewData["Title"] = "MEU PERFIL";
 }
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
 <div class="profile-container">
     <div class="profile-header">
         <h1 class="profile-name">@Model.NomeUsuario</h1>
@@ -10,8 +12,9 @@
     </div>
 
     <div class="profile-details">
+        <!-- Informações Pessoais -->
         <div class="detail-section">
-            <h2 class="section-title">Informações Pessoais</h2>
+            <h2 class="section-title"><i class="fas fa-user-circle"></i> Informações Pessoais</h2>
             <div class="detail-item">
                 <i class="fas fa-envelope"></i>
                 <span>@Model.Email</span>
@@ -22,17 +25,26 @@
             </div>
             <div class="detail-item">
                 <i class="fas fa-map-marker-alt"></i>
-                <span>@Model.Telefone</span>
+                <span>Endereço não informado</span>
             </div>
-            <button class="btn-edit-profile">Editar Perfil</button>
+            <button class="btn-edit-profile"><i class="fas fa-pen"></i> Editar Perfil</button>
         </div>
 
+        <!-- Pedidos Recentes -->
         <div class="detail-section">
-            <h2 class="section-title">Meus Pedidos Recentes</h2>
+            <h2 class="section-title"><i class="fas fa-shopping-bag"></i> Meus Pedidos Recentes</h2>
             <div class="empty-orders">
-                <i class="fas fa-shopping-bag"></i>
+                <i class="fas fa-box-open"></i>
                 <p>Você ainda não fez nenhum pedido</p>
-                <a href="@Url.Action("Index", "Home")" class="btn-shop-now">Compre agora</a>
+                <a href="@Url.Action("Index", "Home")" class="btn-shop-now"><i class="fas fa-store"></i> Compre agora</a>
+            </div>
+        </div>
+
+        <!-- Benefícios -->
+        <div class="detail-section">
+            <h2 class="section-title"><i class="fas fa-gift"></i> Meus Benefícios</h2>
+            <div class="rewards-box">
+                <i class="fas fa-star"></i> Nenhum cupom disponível no momento. Fique de olho! 🎁
             </div>
         </div>
     </div>
