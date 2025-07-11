@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Saboriza.DAOs;
 using Saboriza.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,7 @@ var connectionString = Environment.GetEnvironmentVariable("SABORIZA_DB_CONNECTIO
 builder.Services.AddDbContext<Context>(options =>
     options.UseNpgsql(connectionString));
 
+builder.Services.AddScoped<ProdutoDAO>();
 
 var app = builder.Build();
 
