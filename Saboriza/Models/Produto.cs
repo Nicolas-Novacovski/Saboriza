@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Saboriza.Models
 {
-    [Table("Produtos")]
+    
     public class Produto : BaseModel
     {
         public Produto()
