@@ -1,7 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using Saboriza.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
+var connectionString = Environment.GetEnvironmentVariable("SABORIZA_DB_CONNECTION");
+
+builder.Services.AddDbContext<Context>(options =>
+    options.UseNpgsql(connectionString));
+
 
 var app = builder.Build();
 
