@@ -1,0 +1,61 @@
+﻿@using Saboriza.Models
+@model Usuario
+@{
+    
+}
+
+<div class="wrapper">
+    <div class="mb-1">
+        <label><small class="textRed">* Obrigatório</small></label>
+        <br /><br />
+        @using (Html.BeginForm("Cadastro", "Usuario", FormMethod.Post, new { @id = "usuario-form", @class = "form-horizontal", @enctype = "multipart/form-data" }))
+        {
+            <div class="inputGroup mb-2">
+                <div class="inputGroup-text-modal col-4 col-lg-3 col-md-3 col-sm-5 col-xs-6 textColor" id="btnGroupAddon"><label>NOME USUÁRIO<small class="textRed">&nbsp;*</small></label></div>
+                @Html.TextBoxFor(model => model.NomeUsuario, new { @class = "customBox col-12", @type = "text", @id = "nome", @aria_label = "Input group example", @aria_described_by = "btngroupAddon", @required = "required", @oninput = "this.value = this.value.toUpperCase()" })
+            </div>
+
+            <div class="inputGroup mb-2">
+                <div class="inputGroup-text-modal col-4 col-lg-3 col-md-3 col-sm-5 col-xs-6 textColor" id="btnGroupAddon"><label>FUNÇÃO<small class="textRed">&nbsp;*</small></label></div>
+                @Html.DropDownListFor(model => model.Role, new SelectList(new List<string> { "USUARIO", "ADMINISTRADOR"}), new { @class = "customBox col-12 formControl", @id = "role", @aria_label = "Input group example", @aria_described_by = "btngroupAddon", @required = "required", @style = "max-height: 30px; width:100%" })
+            </div>
+
+            <div class="inputGroup mb-2" id="cnpjEmpresa" style="display:none;">
+                <div class="inputGroup-text-modal col-4 col-lg-3 col-md-3 col-sm-5 col-xs-6 textColor" id="btnGroupAddon"><label>CPF<small class="textRed">&nbsp;*</small></label></div>
+                @Html.TextBoxFor(model => model.CPF, new { @class = "customBox col-12", @type = "cpf", @id = "cpfUser", @aria_label = "Input group example", @aria_described_by = "btngroupAddon" })
+            </div>
+
+            <div class="inputGroup mb-2" id="cnpjEmpresa" style="display:none;">
+                <div class="inputGroup-text-modal col-4 col-lg-3 col-md-3 col-sm-5 col-xs-6 textColor" id="btnGroupAddon"><label>EMAIL<small class="textRed">&nbsp;*</small></label></div>
+                @Html.TextBoxFor(model => model.Email, new { @class = "customBox col-12", @type = "text", @id = "emailUser", @aria_label = "Input group example", @aria_described_by = "btngroupAddon" })
+            </div>
+
+            <div class="inputGroup mb-2" id="cnpjEmpresa" style="display:none;">
+                <div class="inputGroup-text-modal col-4 col-lg-3 col-md-3 col-sm-5 col-xs-6 textColor" id="btnGroupAddon"><label>TELEFONE<small class="textRed">&nbsp;*</small></label></div>
+                @Html.TextBoxFor(model => model.Telefone, new { @class = "customBox col-12", @type = "text", @id = "telUser", @aria_label = "Input group example", @aria_described_by = "btngroupAddon" })
+            </div>
+
+            <div class="inputGroup mb-2" id="cnpjEmpresa" style="display:none;">
+                <div class="inputGroup-text-modal col-4 col-lg-3 col-md-3 col-sm-5 col-xs-6 textColor" id="btnGroupAddon"><label>ENDEREÇO<small class="textRed">&nbsp;*</small></label></div>
+                @Html.TextBoxFor(model => model.Endereco, new { @class = "customBox col-12", @type = "text", @id = "addresUser", @aria_label = "Input group example", @aria_described_by = "btngroupAddon" })
+            </div>
+
+            <div class="inputGroup mb-2">
+                <div class="inputGroup-text-modal col-4 col-lg-3 col-md-3 col-sm-5 col-xs-6 textColor" id="btnGroupAddon"><label>SENHA PROVISÓRIA</label></div>
+                <input type="text" id="senhaUsuario" name="senhaUsuario" class="customBox col-12" value="Parana#@DateTime.Now.Year" disabled />
+            </div>
+            <br />
+            <hr />
+            <div class="row col-12">
+                <div class="container-fluid d-flex justify-content-start col-lg-6 col-sm-12 col-12 mb-3 mb-lg-0 me-0 no-gutter-right" style="flex-direction: row; margin:auto;">
+                    &nbsp;
+                </div>
+                <div class="container-fluid d-flex justify-content-lg-end justify-content-start col-lg-6 col-12 no-gutter-right" style="flex-direction: row;">
+                    <a href="@Url.Action("Index", "Usuario")" class="btn2 btn-outline-primary2 col-6 col-lg-3">CANCELAR </a>
+                    &nbsp;
+                    <button id="btnCadastrarUsuario" class="btn2 btn-success2 col-6 col-lg-3">SALVAR</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
