@@ -11,6 +11,10 @@ builder.Services.AddDbContext<Context>(options =>
 
 builder.Services.AddScoped<ProdutoDAO>();
 
+builder.Services.AddAuthorization();
+builder.Services.AddControllers(); // para APIs
+builder.Services.AddControllersWithViews(); // para MVC com views
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
