@@ -1,0 +1,56 @@
+﻿@model Saboriza.Models.Usuario
+
+@{
+    ViewData["Title"] = "Meu Perfil";
+}
+<div class="profile-container">
+    <div class="profile-header">
+        <div class="profile-avatar">
+            <img src="@Model.PhotoUrl" alt="Foto de perfil" class="avatar-img">
+            <button class="btn-edit-avatar" title="Alterar foto">
+                <i class="fas fa-camera"></i>
+            </button>
+        </div>
+        <h1 class="profile-name">@Model.Name</h1>
+        <p class="profile-join-date">Membro desde @Model.JoinDate.ToString("MMMM yyyy")</p>
+    </div>
+
+    <div class="profile-stats">
+        <div class="stat-card">
+            <div class="stat-value">@Model.OrdersCount</div>
+            <div class="stat-label">Pedidos</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">@Model.FavoritesCount</div>
+            <div class="stat-label">Favoritos</div>
+        </div>
+    </div>
+
+    <div class="profile-details">
+        <div class="detail-section">
+            <h2 class="section-title">Informações Pessoais</h2>
+            <div class="detail-item">
+                <i class="fas fa-envelope"></i>
+                <span>@Model.Email</span>
+            </div>
+            <div class="detail-item">
+                <i class="fas fa-phone"></i>
+                <span>@Model.Phone</span>
+            </div>
+            <div class="detail-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>@Model.Address</span>
+            </div>
+            <button class="btn-edit-profile">Editar Perfil</button>
+        </div>
+
+        <div class="detail-section">
+            <h2 class="section-title">Meus Pedidos Recentes</h2>
+            <div class="empty-orders">
+                <i class="fas fa-shopping-bag"></i>
+                <p>Você ainda não fez nenhum pedido</p>
+                <a href="@Url.Action("Index", "Home")" class="btn-shop-now">Compre agora</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,10 +1,37 @@
 @model Saboriza.Models.Produto
 
-<div class="card m-2" style="width: 18rem;">
-    <img src="@Model.ImagemUrl" class="card-img-top" alt="@Model.Nome">
+<div class="product-card card-hover">
+    @if (!string.IsNullOrEmpty(Model.ImagemUrl))
+    {
+        <div class="product-image-container">
+            <img src="@Model.ImagemUrl" class="product-image" alt="@Model.Nome">
+            @if (Model.PrecoPromocional > 0 && Model.PrecoPromocional < Model.Preco)
+            {
+                <span class="discount-badge">Promoção</span>
+            }
+        </div>
+    }
     <div class="card-body">
-        <h5 class="card-title">@Model.Nome</h5>
-        <p class="card-text">@Model.Descricao</p>
-        <p class="card-text"><strong>Preço:</strong> R$ @Model.Preco.ToString("F2")</p>
+        <h3 class="product-title">@Model.Nome</h3>
+        <p class="product-description">@Model.Descricao</p>
+        <div class="prices">
+            @if (Model.PrecoPromocional > 0 && Model.PrecoPromocional < Model.Preco)
+            {
+                <span class="original-price">R$ @Model.Preco.ToString("F2")</span>
+                <span class="current-price">R$ @Model.PrecoPromocional.ToString("F2")</span>
+            }
+            else
+            {
+                <span class="current-price">R$ @Model.Preco.ToString("F2")</span>
+            }
+        </div>
+        <div class="product-actions">
+            <button class="btn btn-sm btn-wishlist">
+                <i class="far fa-heart"></i>
+            </button>
+            <button class="btn btn-sm btn-add-to-cart">
+                <i class="fas fa-shopping-cart"></i> Adicionar
+            </button>
+        </div>
     </div>
 </div>

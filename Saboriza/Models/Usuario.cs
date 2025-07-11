@@ -3,7 +3,7 @@
 namespace Saboriza.Models
 {
 
-    [table("Usuarios")]
+    
     public class Usuario : BaseModel { 
 
         public int Id { get; set; }

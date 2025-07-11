@@ -1,13 +1,149 @@
 @model IEnumerable<Saboriza.Models.Produto>
 
 @{
-    ViewData["Title"] = "Home";
+    ViewData["Title"] = "Nossos Produtos";
 }
 
-<h1>Produtos em Destaque</h1>
-<div class="d-flex flex-wrap">
-@foreach (var produto in Model)
-{
-    @Html.Partial("_ProductCard", produto)
-}
+<div class="page-header">
+    <h1>Nossos Produtos</h1>
+    <p class="tagline">Feito com carinho, para você.</p>
 </div>
+
+<div class="filter-container">
+    <div class="search-filter-group">
+        <!-- Barra de busca existente -->
+        <div class="search-container">
+            <div class="compact-search">
+                <button class="search-toggle" id="searchToggle">
+                    <i class="fas fa-search"></i>
+                </button>
+                <div class="expanded-search" id="expandedSearch">
+                    <input type="text" placeholder="Buscar alimento..." class="search-input" id="searchInput">
+                    <button class="search-btn">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Novo filtro de categorias -->
+        <div class="category-filter">
+            <button class="filter-toggle" id="filterToggle">
+                <i class="fas fa-filter"></i>
+                <span>Categorias</span>
+            </button>
+            <div class="filter-options" id="filterOptions">
+                <button class="filter-option active" data-category="all">Todos</button>
+                <button class="filter-option" data-category="doces">Doces</button>
+                <button class="filter-option" data-category="salgados">Salgados</button>
+                <button class="filter-option" data-category="bebidas">Bebidas</button>
+                <button class="filter-option" data-category="artesanal">Artesanal</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    @foreach (var produto in Model)
+    {
+        <div class="col-md-4 mb-4">
+            @Html.Partial("_ProductCard", produto)
+        </div>
+    }
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+         // Controles da barra de busca (existente)
+         const searchToggle = document.getElementById('searchToggle');
+         const expandedSearch = document.getElementById('expandedSearch');
+         const searchInput = document.getElementById('searchInput');
+         const searchBtn = document.querySelector('.search-btn');
+
+         // Novos controles do filtro
+         const filterToggle = document.getElementById('filterToggle');
+         const filterOptions = document.getElementById('filterOptions');
+         const filterButtons = document.querySelectorAll('.filter-option');
+         const productItems = document.querySelectorAll('.product-item');
+
+         // Alternar a busca expandida
+         searchToggle.addEventListener('click', function() {
+             expandedSearch.classList.toggle('active');
+             if(expandedSearch.classList.contains('active')) {
+                 searchInput.focus();
+                 searchToggle.classList.add('animate__animated', 'animate__pulse');
+                 setTimeout(() => {
+                     searchToggle.classList.remove('animate__animated', 'animate__pulse');
+                 }, 1000);
+             }
+         });
+
+         // Alternar o menu de filtros
+         filterToggle.addEventListener('click', function() {
+             filterOptions.classList.toggle('show');
+             this.classList.toggle('active');
+         });
+
+         // Fechar filtros ao clicar fora
+         document.addEventListener('click', function(e) {
+             if (!filterToggle.contains(e.target) && !filterOptions.contains(e.target)) {
+                 filterOptions.classList.remove('show');
+                 filterToggle.classList.remove('active');
+             }
+         });
+
+         // Filtrar produtos por categoria
+         filterButtons.forEach(button => {
+             button.addEventListener('click', function() {
+                 const category = this.dataset.category;
+
+                 // Atualizar botão ativo
+                 filterButtons.forEach(btn => btn.classList.remove('active'));
+                 this.classList.add('active');
+
+                 // Filtrar produtos
+                 productItems.forEach(item => {
+                     if (category === 'all' || item.dataset.category === category) {
+                         item.style.display = 'block';
+                         item.classList.add('animate__animated', 'animate__fadeIn');
+                     } else {
+                         item.style.display = 'none';
+                     }
+                 });
+
+                 // Fechar o menu de filtros
+                 filterOptions.classList.remove('show');
+                 filterToggle.classList.remove('active');
+             });
+         });
+
+         // Buscar ao clicar no botão ou pressionar Enter
+         function performSearch() {
+             const searchTerm = searchInput.value.toLowerCase();
+
+             productItems.forEach(item => {
+                 const productName = item.querySelector('.product-title').textContent.toLowerCase();
+                 if (productName.includes(searchTerm)) {
+                     item.style.display = 'block';
+                     item.classList.add('animate__animated', 'animate__fadeIn');
+                 } else {
+                     item.style.display = 'none';
+                 }
+             });
+
+             searchBtn.classList.add('animate__animated', 'animate__rubberBand');
+             setTimeout(() => {
+                 searchBtn.classList.remove('animate__animated', 'animate__rubberBand');
+             }, 1000);
+         }
+
+         searchBtn.addEventListener('click', performSearch);
+
+         searchInput.addEventListener('keypress', function(e) {
+             if(e.key === 'Enter') {
+                 performSearch();
+             }
+         });
+     });
+</script>
