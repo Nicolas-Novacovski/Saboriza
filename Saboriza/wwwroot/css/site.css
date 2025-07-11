@@ -550,7 +550,6 @@ body {
     text-transform: uppercase;
     font-weight: 400;
     line-height: 1.5;
-    color: #212529;
     justify-content: center;
     align-items: center;
     vertical-align: central;
@@ -560,8 +559,8 @@ body {
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
-    background-color: transparent;
-    border: 1px solid transparent;
+    border-width: 1px;
+    border-style: solid;
     padding: 4px 0.75rem;
     font-size: var(--p-font-size);
     border-radius: 0.25rem;

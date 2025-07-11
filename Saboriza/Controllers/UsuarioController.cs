@@ -52,6 +52,8 @@ namespace Saboriza.Controllers
         }
 
 
+        [HttpGet]
+        [Route("Cadastrar-Usuario")]
         public IActionResult Cadastro()
         {
             return View();
