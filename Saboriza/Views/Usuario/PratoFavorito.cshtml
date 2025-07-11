@@ -23,7 +23,7 @@
         <div class="favorites-grid">
             @foreach (var prato in Model)
             {
-                <div class="favorite-card">
+                <div class="favorite-card" id="card-favorito-@prato.Id">
                     <img src="@prato.ImagemUrl" alt="@prato.Nome" class="favorite-image" />
                     <button title="Remover dos favoritos" class="btn-remove-favorite" 
                             onclick="removerFavorito(@prato.Id)">
@@ -39,20 +39,79 @@
     }
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    function removerFavorito(id) {
-        if (!confirm("Tem certeza que deseja remover este prato dos favoritos?")) return;
 
-        // Exemplo de requisição AJAX para remover favorito
-        fetch('/Favoritos/Remover/' + id, { method: 'POST' })
-            .then(res => {
-                if (res.ok) {
-                    alert('Prato removido dos favoritos!');
-                    location.reload(); // Recarregar a página para atualizar lista
-                } else {
-                    alert('Erro ao remover. Tente novamente.');
-                }
-            })
-            .catch(() => alert('Erro na comunicação com o servidor.'));
+    function removerFavorito(id) {
+        Swal.fire({
+            title: 'Remover dos favoritos?',
+            text: 'Esse pratinho vai sentir sua falta! 💔',
+            icon: 'question',
+            iconColor: '#FFD700',
+            showCancelButton: true,
+            confirmButtonText: 'Sim, remover',
+            cancelButtonText: 'Cancelar',
+            confirmButtonColor: '#FFD700',
+            cancelButtonColor: '#999',
+            background: '#fff',
+            color: '#000',
+            width: '380px', 
+            padding: '1.6em',
+            customClass: {
+                popup: 'swal2-cute-popup',
+                title: 'swal2-cute-title',
+                htmlContainer: 'swal2-cute-text',
+                confirmButton: 'swal2-cute-confirm',
+                cancelButton: 'swal2-cute-cancel'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`/Favoritos/Remover/${id}`, {
+                    method: 'POST'
+                })
+                .then(response => {
+                    if (response.ok) {
+                        const card = document.querySelector(`#card-favorito-${id}`);
+                        if (card) {
+                            card.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+                            card.style.opacity = 0;
+                            card.style.transform = "translateY(20px)";
+                            setTimeout(() => card.remove(), 400);
+                        }
+                        showNotification("Removido com sucesso!");
+                    } else {
+                        showNotification("Erro ao remover. Tente novamente.", true);
+                    }
+                })
+                .catch(() => {
+                    showNotification("Erro de conexão com o servidor.", true);
+                });
+            }
+        });
+    }
+
+
+    function showNotification(mensagem, erro = false) {
+        const noti = document.createElement("div");
+        noti.innerText = mensagem;
+        noti.style.position = "fixed";
+        noti.style.bottom = "20px";
+        noti.style.right = "20px";
+        noti.style.padding = "12px 20px";
+        noti.style.borderRadius = "8px";
+        noti.style.color = erro ? "#fff" : "#000";
+        noti.style.backgroundColor = erro ? "#e74c3c" : "#FFD700";
+        noti.style.fontWeight = "600";
+        noti.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
+        noti.style.opacity = 0;
+        noti.style.transition = "opacity 0.3s ease";
+
+        document.body.appendChild(noti);
+        setTimeout(() => noti.style.opacity = 1, 100);
+
+        setTimeout(() => {
+            noti.style.opacity = 0;
+            setTimeout(() => document.body.removeChild(noti), 300);
+        }, 3000);
     }
 </script>

@@ -889,3 +889,38 @@ h1 {
     .btn-back-profile:hover {
         background-color: #e6c200;
     }
+
+.swal2-cute-popup {
+    border-radius: 15px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.swal2-cute-title {
+    font-size: 18px !important;
+    font-weight: 700;
+    color: #000;
+}
+
+.swal2-cute-text {
+    font-size: 14px;
+    color: #333;
+}
+
+.swal2-cute-confirm {
+    font-size: 13px;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 30px !important;
+    background-color: #FFD700 !important;
+    color: #000 !important;
+}
+
+.swal2-cute-cancel {
+    font-size: 13px;
+    padding: 8px 16px;
+    border-radius: 30px !important;
+    background-color: #ddd !important;
+    color: #000 !important;
+}
+
+
