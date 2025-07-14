@@ -114,9 +114,41 @@ body {
 /* Rodapé */
 .footer {
     background-color: #f8f9fa;
-    padding: 0 rem 0;
-    margin-top: 2rem;
+    padding: 1px 0; /* Altura reduzida */
+    font-size: 15px;
+    margin-top: 1rem;
+    color: #555;
 }
+
+    .footer .container {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    .footer a {
+        color: #000;
+        transition: color 0.2s ease;
+    }
+
+        .footer a:hover {
+            color: #FFD700;
+        }
+
+    .footer .fab {
+        font-size: 18px; 
+    }
+
+    .footer .mb-2,
+    .footer .mb-1 {
+        margin-bottom: 1px !important; /* reduz espaço entre ícones e texto */
+    }
+
+    .footer small {
+        display: block;
+        margin-top: 4px;
+    }
 
 /* Efeitos globais */
 .btn-primary {
@@ -150,9 +182,54 @@ body {
     text-align: start;
 }
 
-/* ========================================== */
-/* ESTILOS DO CARD DE PRODUTO (ÚNICA ALTERAÇÃO) */
-/* ========================================== */
+
+/* =========================== */
+/* ESTILOS DA TELA INICIAL     */
+/* =========================== */
+
+.page-header {
+    text-align: center;
+    margin: 30px 0;
+}
+
+    .page-header h1 {
+        font-size: 32px;
+        font-weight: 800;
+        color: #000;
+        border-bottom: 3px solid #FFD700;
+        display: inline-block;
+        padding-bottom: 5px;
+    }
+
+    .page-header .tagline {
+        font-style: italic;
+        color: #555;
+        margin-top: 8px;
+        font-size: 14px;
+    }
+
+.section-bloco {
+    margin-top: 40px;
+}
+
+    .section-bloco h2 {
+        font-size: 24px;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 20px;
+        border-left: 6px solid #FFD700;
+        padding-left: 10px;
+    }
+
+    .section-bloco i {
+        margin-right: 8px;
+        color: #FFD700;
+    }
+
+
+/* =========================== */
+/* ESTILOS DO CARD DE PRODUTO  */
+/* =========================== */
 
 .product-card {
     border: 1px solid #eee;
@@ -335,8 +412,8 @@ body {
 
 .search-container {
     position: fixed;
-    top: 111px;
-    right: 200px;
+    top: 120px;
+    right: 20px;
     z-index: 100;
 }
 
