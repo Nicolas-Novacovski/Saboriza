@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Models\Enums\" />
+    <Folder Include="Views\Produto\" />
   </ItemGroup>
 
   <ItemGroup>
