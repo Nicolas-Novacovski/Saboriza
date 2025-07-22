@@ -1,10 +1,13 @@
-@model IEnumerable<Saboriza.Models.Produto>
+ï»¿@model IEnumerable<Saboriza.Models.Produto>
 
 @{
-    ViewData["Title"] = "Nossos Produtos";
+    ViewData["Title"] = "Vitrine";
 }
 
-
+<div class="page-header">
+    <h1>Vitrine de Produtos</h1>
+</div>
+<br />
 <div class="filter-container">
     <div class="search-filter-group">
         <!-- Barra de busca existente -->
@@ -21,55 +24,32 @@
                 </div>
             </div>
         </div>
+
+        <!-- Novo filtro de categorias -->
+        <div class="category-filter">
+            <button class="filter-toggle" id="filterToggle">
+                <i class="fas fa-filter"></i>
+                <span>Categorias</span>
+            </button>
+            <div class="filter-options" id="filterOptions">
+                <button class="filter-option active" data-category="all">Todos</button>
+                <button class="filter-option" data-category="doces">Doces</button>
+                <button class="filter-option" data-category="salgados">Salgados</button>
+                <button class="filter-option" data-category="bebidas">Bebidas</button>
+                <button class="filter-option" data-category="artesanal">Artesanal</button>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="page-header">
-    <h1><i class="fas fa-utensils"></i> Nossos Produtos</h1>
-    <p class="tagline">Feito com carinho, para você.</p>
-</div>
-<br/>
 
-
-
-<div class="home-sections">
-
-    <section class="section-bloco">
-        <h2><i class="fas fa-fire"></i> Mais Pedidos</h2>
-        <div class="row">
-            @foreach (var produto in Model.Take(3)) // exemplo: 3 primeiros como mais pedidos
-            {
-                <div class="col-md-4 mb-4">
-                    @Html.Partial("_ProductCard", produto)
-                </div>
-            }
+<div class="row">
+    @foreach (var produto in Model)
+    {
+        <div class="col-md-4 mb-4">
+            @Html.Partial("_ProductCard", produto)
         </div>
-    </section>
-
-    <section class="section-bloco">
-        <h2><i class="fas fa-heart"></i> Seus Favoritos</h2>
-        <div class="row">
-            @foreach (var produto in Model.Skip(3).Take(3)) // exemplo: próximos 3 como favoritos
-            {
-                <div class="col-md-4 mb-4">
-                    @Html.Partial("_ProductCard", produto)
-                </div>
-            }
-        </div>
-    </section>
-
-    <section class="section-bloco">
-        <h2><i class="fas fa-tag"></i> Promoções do Dia</h2>
-        <div class="row">
-            @foreach (var produto in Model.Skip(6).Take(3)) // exemplo: últimos 3 como promo
-            {
-                <div class="col-md-4 mb-4">
-                    @Html.Partial("_ProductCard", produto)
-                </div>
-            }
-        </div>
-    </section>
-
+    }
 </div>
 
 <script>
@@ -117,7 +97,7 @@
              button.addEventListener('click', function() {
                  const category = this.dataset.category;
 
-                 // Atualizar botão ativo
+                 // Atualizar botÃ£o ativo
                  filterButtons.forEach(btn => btn.classList.remove('active'));
                  this.classList.add('active');
 
@@ -137,7 +117,7 @@
              });
          });
 
-         // Buscar ao clicar no botão ou pressionar Enter
+         // Buscar ao clicar no botÃ£o ou pressionar Enter
          function performSearch() {
              const searchTerm = searchInput.value.toLowerCase();
 

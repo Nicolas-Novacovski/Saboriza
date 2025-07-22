@@ -27,7 +27,7 @@
                             <a class="nav-link text-dark active" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Vitrine</a>
+                            <a href="@Url.Action("Vitrine", "Home")" class="nav-link text-dark" title="Vitrine">Vitrine</a>
                         </li>
                     </ul>
 
@@ -57,14 +57,16 @@
 
     <footer class="border-top footer text-muted">
         <div class="container text-center">
-            <div class="mb-2">
-                <a href="#" class="text-dark mx-2"><i class="fab fa-instagram fa-lg"></i></a>
-                <a href="#" class="text-dark mx-2"><i class="fab fa-facebook fa-lg"></i></a>
-                <a href="#" class="text-dark mx-2"><i class="fab fa-whatsapp fa-lg"></i></a>
+            <div class="mb-1">
+                <a href="#" class="text-dark mx-2"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-dark mx-2"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-dark mx-2"><i class="fab fa-whatsapp"></i></a>
             </div>
-            &copy; 2025 - Saboriza - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <small>&copy; 2025 - Saboriza - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacidade</a></small>
         </div>
     </footer>
+
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
