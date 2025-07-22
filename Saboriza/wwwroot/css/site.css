@@ -612,41 +612,45 @@ body {
     color: var(--white);
     font-weight: 600;
     background-color: var(--btn-green);
-    border-color: var(--btn-green);
+    border: 2px solid var(--btn-green);
+    border-radius: 6px;
+    transition: 0.3s ease;
 }
 
     .btn-success2:hover {
-        color: var(--btn-green);
-        background-color: var(--white);
-        border-color: var(--btn-green);
+        color: var(--btn-green-text);
+        background-color: var(--btn-green-hover);
+        border-color: var(--btn-green-text);
     }
 
-
-    .btn-success2:disabled, .btn-success2.disabled {
-        color: var(--white);
-        background-color: var(--btn-green);
-        border-color: var(--btn-green);
+    /* Estado desabilitado */
+    .btn-success2:disabled,
+    .btn-success2.disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
     }
 
+/* Botão contorno */
 .btn-outline-success2 {
     padding: 4px 8px;
-    color: var(--white);
+    color: var(--btn-green-text);
     font-weight: 600;
-    background-color: var(--green);
-    border-color: var(--green);
+    background-color: transparent;
+    border: 2px solid var(--btn-green-text);
+    border-radius: 6px;
+    transition: 0.3s ease;
 }
 
     .btn-outline-success2:hover {
-        color: var(--green);
-        background-color: var(--white);
-        border-color: var(--green);
+        color: var(--white);
+        background-color: var(--btn-green-text);
     }
 
-
-    .btn-outline-success2:disabled, .btn-outline-success2.disabled {
-        color: var(--green);
-        background-color: var(--white);
-        border-color: var(--green);
+    /* Estado desabilitado */
+    .btn-outline-success2:disabled,
+    .btn-outline-success2.disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
     }
 
 /* ========================================== */
@@ -922,4 +926,19 @@ h1 {
     color: #000 !important;
 }
 
+.customBox {
+    background-color: transparent;
+    min-height: 30px;
+    border: 1px solid var(--text-color);
+    border-radius: 0.28rem;
+    padding-left: 5px;
+    color: var(--text-color);
+}
+
+    .customBox:disabled {
+        border: 1px solid var(--text-color);
+        border-radius: 0.28rem;
+        background-color: var(--customBoxDisabledText);
+        color: var(--text-color) !important;
+    }
 

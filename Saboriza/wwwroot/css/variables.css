@@ -1,7 +1,9 @@
 ﻿:root {
     --primary-color: #FFD700;
     --text-color: #000000;
-    --btn-green: #03C03C;
-    --white: #FFFFFF;
-    --green: #12AA33;
+    --btn-green: #00B894;
+    --btn-green-hover: #ffffff;
+    --btn-green-text: #00B894;
+    --white: #ffffff;
+    --customBoxDisabledText: #f0f0f0;
 }
