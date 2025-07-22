@@ -16,11 +16,16 @@ namespace Saboriza.DAOs
 
         public List<Produto> ListarTodos()
         {
-            return _context.Produtos
-                .Where(p => p.Status == 0)
-                .OrderBy(p => p.Nome)
-                .ToList();
+            return _context.Produtos.ToList();
         }
+
+        //public List<Produto> ListarTodos()
+        //{
+        //    return _context.Produtos
+        //        .Where(p => p.Status == 0)
+        //        .OrderBy(p => p.Nome)
+        //        .ToList();
+        //}
 
         public Produto BuscarPorId(int id)
         {
